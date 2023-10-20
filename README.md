@@ -17,7 +17,8 @@
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --># 五彩 Obsidian 模板使用手册
+<!-- /vscode-markdown-toc -->
+# 五彩 Obsidian 模板使用手册
 你好，五彩的朋友 🤝❤️。
 
 五彩支持将你的数据同步到 Obsidian、Logseq、Workflowy，数据包括划线、想法、笔记、全文剪藏。
