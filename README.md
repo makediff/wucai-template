@@ -35,15 +35,17 @@
 ### <a name='-1'></a>五彩官方默认 
 - Name: Simple
 - Author: 五彩Team
-- Site: [五彩官网](https://www.dotalk.cn/product/wucai)
+- Link: [五彩官网](https://www.dotalk.cn/product/wucai)
 
 ```jinja
 ---
 title: "{{title}}"
 url: "{{url}}"
 wucai_url: "{{wucaiurl}}"
-author: {{author}}
+author: "{{author}}"
 tags: {{trimtags}}
+highlightcount: {{highlightcount}}
+isstar: {{isstar}}
 create_at: {{createat}}
 update_at: {{updateat}}
 noteid: {{noteid}}
@@ -70,7 +72,7 @@ noteid: {{noteid}}
 ### <a name='Seyee'></a>Seyee
 - Name: Seyee
 - Author: Seyee
-- Site: [seyee.co](https://seyee.co/post/wucai_template/)
+- Link: [seyee.co](https://seyee.co/post/wucai_template/)
 
 ```jinja
 ---
@@ -97,10 +99,12 @@ highlightcount: {{highlightcount}}
 
 ```
 
+> Tips: 此模板中不包含全文剪藏，如有需要可从五彩官方模板里复制过来即可。
+
 ### <a name='MoyF'></a>MoyF
 - Name: MoyF
 - Author: MoyF
-- Site: [MoyF](https://feedback.dotalk.cn/note/H5AA4d41502b.html)
+- Link: [MoyF](https://feedback.dotalk.cn/note/H5AA4d41502b.html)
 
 ```jinja
 ---
