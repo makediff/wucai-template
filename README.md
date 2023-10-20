@@ -1,23 +1,25 @@
+# 目录
 <!-- vscode-markdown-toc -->
-* 1. [推荐的模板](#)
-	* 1.1. [五彩官方默认](#-1)
-	* 1.2. [bbb](#bbb)
-	* 1.3. [ccc](#ccc)
-* 2. [构建属于自己的模板](#-1)
-	* 2.1. [页面结构说明](#-1)
-	* 2.2. [先来个基础](#-1)
-	* 2.3. [简短的解释](#-1)
-	* 2.4. [尝试做一点变更](#-1)
-	* 2.5. [应用你的模板](#-1)
-* 3. [模板引擎](#-1)
-* 4. [⚠️注意事项](#-1)
-* 5. [Happy Journey](#HappyJourney)
+* [推荐的模板](#)
+	* [五彩官方默认](#-1)
+	* [bbb](#bbb)
+	* [ccc](#ccc)
+* [构建属于自己的模板](#-1)
+	* [页面结构说明](#-1)
+	* [先来个基础](#-1)
+	* [简短的解释](#-1)
+	* [尝试做一点变更](#-1)
+	* [应用你的模板](#-1)
+* [模板引擎](#-1)
+* [⚠️注意事项](#-1)
+* [Happy Journey](#HappyJourney)
 
 <!-- vscode-markdown-toc-config
-	numbering=true
+	numbering=false
 	autoSave=true
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
+
 # 五彩 Obsidian 模板使用手册
 你好，五彩的朋友 🤝❤️。
 
@@ -27,9 +29,9 @@
 我们提供了默认的模板样式，也收集了热心朋友贡献的模板，以供大家使用。
 如果你有想定制一个自己的模板，看这个教程就对了，接下来会一步一步的进行指导。期待你的新作，如果可以，希望能分享给大家。
 
-##  1. <a name=''></a>推荐的模板
+## <a name=''></a>推荐的模板
 
-###  1.1. <a name='-1'></a>五彩官方默认 
+### <a name='-1'></a>五彩官方默认 
 - Name: Simple
 - Author: 五彩
 - Site: xxx
@@ -64,33 +66,33 @@
 ```
 
 
-###  1.2. <a name='bbb'></a>bbb
+### <a name='bbb'></a>bbb
 xxx
 
-###  1.3. <a name='ccc'></a>ccc
+### <a name='ccc'></a>ccc
 xxx
 
-##  2. <a name='-1'></a>构建属于自己的模板
+## <a name='-1'></a>构建属于自己的模板
 
-###  2.1. <a name='-1'></a>页面结构说明
+### <a name='-1'></a>页面结构说明
 xxx
 
-###  2.2. <a name='-1'></a>先来个基础
+### <a name='-1'></a>先来个基础
 xxx
 
-###  2.3. <a name='-1'></a>简短的解释
+### <a name='-1'></a>简短的解释
 xxx
 
-###  2.4. <a name='-1'></a>尝试做一点变更
+### <a name='-1'></a>尝试做一点变更
 xxx
 
-###  2.5. <a name='-1'></a>应用你的模板
+### <a name='-1'></a>应用你的模板
 xxx
 
-##  3. <a name='-1'></a>模板引擎
+## <a name='-1'></a>模板引擎
 xxx
 
-##  4. <a name='-1'></a>⚠️注意事项
+## <a name='-1'></a>⚠️注意事项
 xxx
 
-##  5. <a name='HappyJourney'></a>Happy Journey
+## <a name='HappyJourney'></a>Happy Journey
