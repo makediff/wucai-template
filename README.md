@@ -3,8 +3,8 @@
 * [五彩 Obsidian 模板使用手册](#Obsidian)
 * [推荐模板列表](#)
 	* [五彩官方默认](#-1)
-	* [bbb](#bbb)
-	* [ccc](#ccc)
+	* [Seyee](#Seyee)
+	* [MoyF](#MoyF)
 * [构建属于自己的模板](#-1)
 	* [页面结构说明](#-1)
 	* [先来个基础](#-1)
@@ -34,44 +34,136 @@
 
 ### <a name='-1'></a>五彩官方默认 
 - Name: Simple
-- Author: 五彩
-- Site: xxx
+- Author: 五彩Team
+- Site: [五彩官网](https://www.dotalk.cn/product/wucai)
 
 ```jinja
 ---
-标题: "{{title}}"
-创建时间: {{createat}}
-更新时间: {{updateat}}
-笔记ID: {{noteid}}
+title: "{{title}}"
+url: "{{url}}"
+wucai_url: "{{wucaiurl}}"
+author: {{author}}
+tags: {{trimtags}}
+create_at: {{createat}}
+update_at: {{updateat}}
+noteid: {{noteid}}
 ---
 
-## {{title}} 
-{{tags}} #五彩插件 [原文]({{url}})
-
-## 页面笔记
+## Page Notes
 {% block pagenote %}
 {{pagenote}}
 {% endblock %}
 
-## 划线列表
+## Highlights
 {% block highlights %}
 {% for item in highlights %}
 {{ item | style1({prefix:"> ", anno:"> __想法__：", color:"█  "}) }}
 {% endfor %}
 {% endblock %}
 
-## 全文剪藏
+## Page Markdown
 {% block mdcontent %}
 {{mdcontent}}
 {% endblock %}
 ```
 
+### <a name='Seyee'></a>Seyee
+- Name: Seyee
+- Author: Seyee
+- Site: [seyee.co](https://seyee.co/post/wucai_template/)
 
-### <a name='bbb'></a>bbb
-xxx
+```jinja
+---
+url: {{url}}
+wucai_url: {{wucaiurl}}
+创建时间: {{createat}}
+更新时间: {{updateat}}
+highlightcount: {{highlightcount}}
+{% if isdailynote == false %}全文剪藏: {{ispagemirror}}{% endif %}
 
-### <a name='ccc'></a>ccc
-xxx
+{{tags | replace("#", "") | replace("星标", "五彩星标") | yaml_field("tags:") }}
+{{pagenote | replace("#五彩小助手", "") | yaml_text | yaml_field("pagenote:")}}
+---
+
+## highlights
+
+{% block highlights %}
+
+{% for item in highlights %}
+{{ item | style1({prefix:"> ", anno:"> #notes ", color:""}) }}
+{% endfor %}
+
+{% endblock %}
+
+```
+
+### <a name='MoyF'></a>MoyF
+- Name: MoyF
+- Author: MoyF
+- Site: [MoyF](https://feedback.dotalk.cn/note/H5AA4d41502b.html)
+
+```jinja
+---
+标题: "{{title}}"
+url: {{url}}
+创建时间: {{createat}}
+更新时间: {{createat}}
+笔记ID: {{noteid}}
+收藏: {{isstar}}
+划线数量: {{highlightcount}}
+标签: {{trimtags}}
+obsidianUIMode: preview
+---
+
+# {{title}} 
+
+#Wucai
+
+> [阅读原文]({{ url }})
+> [在五彩中查看]({{ wucaiurl }})
+
+{% if pagenote %}
+## 页面笔记
+{% block pagenote %}
+> [!Review]
+> {{pagenote | replace("\n", "\n> ") }}
+{% endblock %}
+{% endif %}
+
+## 划线列表
+{% block highlights %}
+{% for item in highlights %}
+{% set colorSymbol %}◇  {% endset %}
+{% set formattedHighlight %}
+<font color="{{ item.color }}">{{ colorSymbol }}</font> {{ item.note | trim | replace("\n", "\n> ") }}{% endset %}
+
+{% if item.annonation %}
+> [!Annotation]
+> {{ formattedHighlight }}
+> ^{{ item.refid }}
+> 
+> {{ '---' }}
+> 🦊 {{ item.annonation }}
+{% else %}
+> [!Highlight] 
+> {{ formattedHighlight }}
+> ^{{ item.refid }}
+{% endif %}
+{% endfor %}
+
+{% endblock %}
+
+{% if mdcontent %}
+{% block mdcontent %}
+
+---
+
+
+## 全文剪藏 %% fold %%
+{{mdcontent}}
+{% endblock %}
+{% endif %}
+```
 
 ## <a name='-1'></a>构建属于自己的模板
 
