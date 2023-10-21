@@ -199,7 +199,7 @@ obsidianUIMode: preview
 这个就涉及到了五彩模板变量名，以下是五彩模板所有变量名列表。
 
 ### <a name='-1'></a>五彩模板变量名
-```
+```html
 {{title}}           : 标题 (string)
 {{url}}             : 原始链接 (string)
 {{wucaiurl}}        : 五彩连接 (string)
@@ -222,7 +222,7 @@ obsidianUIMode: preview
 {{notetype}}        : 笔记类型（string），page，dailynote （版本>=23.10.20）
 {{ispagemirror}}    : 是否剪藏(boolean)，true是剪藏，否则不是剪藏
 {{highlightcount}}  : 划线数量 (integer)，当前网页的划线数量
-{{mdcontent}}		    : markdown 格式的全文剪藏
+{{mdcontent}}		     : markdown 格式的全文剪藏
 {{highlights}}           : 划线列表 (list)
     {{item.type}}        : 划线类型(string), 分别是 highlight、image、math(数学公式)、quote(引用)， (版本 >= 23.10.20)
     {{item.refid}}       : 划线id (string)，如 b76ebe3
