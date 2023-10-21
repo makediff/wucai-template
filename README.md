@@ -199,7 +199,7 @@ obsidianUIMode: preview
 这个就涉及到了五彩模板变量名，以下是五彩模板所有变量名列表。
 
 ### <a name='-1'></a>五彩模板变量名
-```html
+```YAML
 {{title}}           : 标题 (string)
 {{url}}             : 原始链接 (string)
 {{wucaiurl}}        : 五彩连接 (string)
