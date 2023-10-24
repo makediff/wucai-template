@@ -13,11 +13,14 @@
 	* [应用模板](#-1)
 * [模板引擎说明](#-1)
 * [五彩提供的几个函数](#-1)
-	* [date 函数](#date)
-	* [yaml_text 函数](#yaml_text)
+	* [date 日期函数](#date)
+	* [yaml_text 多行文本](#yaml_text)
 	* [yaml_field 属性显示](#yaml_field)
 * [五彩提供的两个内置样式函数](#-1)
 	* [style1 样式函数](#style1)
+		* [style1 demo1](#style1demo1)
+		* [style1 demo2](#style1demo2)
+		* [style1 demo3](#style1demo3)
 	* [dailynote 样式函数](#dailynote)
 * [⚠️注意事项](#-1)
 * [Enjor yourself.](#Enjoryourself.)
@@ -298,7 +301,7 @@ nunjucks 官网文档写得非常细致，是个非常好的学习资料。不�
 
 为了便于使用，五彩提供了几个便捷函数。
 
-### <a name='date'></a>date 函数
+### <a name='date'></a>date 日期函数
 用来将一个时间戳转化成实践格式。
 ```jinja
 {{ createat_ts | date("YYYY-MM-DD") }} 会得到 2023-02-08
@@ -309,7 +312,7 @@ nunjucks 官网文档写得非常细致，是个非常好的学习资料。不�
 - HH   : 小时, 如 09
 - mm   : 分钟，如 05
 
-### <a name='yaml_text'></a>yaml_text 函数
+### <a name='yaml_text'></a>yaml_text 多行文本
 将带有换行的文本放到属性区域时，可以使用这个函数。
 ```jinja
 pagenote: {{ pagenote | yaml_text }}
@@ -345,19 +348,19 @@ tags: {{tags}}
   - color 指定颜色色块, string
   - color_line 指定是否将整个划线都高亮, boolean
 
-#### style1 demo1
+#### <a name='style1demo1'></a>style1 demo1
 ```jinja
 {{ item | style1({prefix:"> ", anno:"> __想法__：", color:"█  "}) }}
 ```
 ![style1 demo1](/images/style1-1.png)
 
-#### style1 demo2
+#### <a name='style1demo2'></a>style1 demo2
 ```jinja
 {{ item | style1({prefix:"> ", anno:"> __想法__：", color_line:true}) }}
 ```
 ![style1 demo2](/images/style1-2.png)
 
-#### style1 demo3
+#### <a name='style1demo3'></a>style1 demo3
 ```jinja
 {{ item | style1({prefix:"> ", anno:"> __想法__：", colorx:"█  ", refid:true}) }}
 ```
