@@ -53,7 +53,7 @@
 标题: "{{title}}"
 笔记ID: {{noteid}}
 笔记类型: {{notetype}}
-星标: "{% if isstar %}是{% else %}否{% endif %}"
+星标: {{isstar}}
 tags: {{mergedtags}}
 {% if not isdailynote %}
 域名: {{domain}}
@@ -93,6 +93,7 @@ tags: {{mergedtags}}
 {% endblock %}
 {% endif %}
 ```
+![style-wucai](/images/style-wucai.png)
 
 ### <a name='Seyee'></a>Seyee
 - Name: Seyee
@@ -101,14 +102,16 @@ tags: {{mergedtags}}
 
 ```jinja
 ---
+title: {{title}}
 url: {{url}}
 wucai_url: {{wucaiurl}}
 创建时间: {{createat}}
 更新时间: {{updateat}}
 highlightcount: {{highlightcount}}
-{% if isdailynote == false %}全文剪藏: {{ispagemirror}}{% endif %}
-
-{{tags | replace("#", "") | replace("星标", "五彩星标") | yaml_field("tags:") }}
+{% if not isdailynote %}
+全文剪藏: {{ispagemirror}}
+{% endif %}
+{{trimtags | replace("#", "") | replace("星标", "五彩星标") | yaml_field("tags:") }}
 {{pagenote | replace("#五彩小助手", "") | yaml_text | yaml_field("pagenote:") }}
 ---
 
@@ -122,8 +125,14 @@ highlightcount: {{highlightcount}}
 
 {% endblock %}
 
+{% if not isdailynote %}
+## 全文剪藏
+{% block mdcontent %}
+{{mdcontent}}
+{% endblock %}
+{% endif %}
 ```
-> Tips: Seyee 模板中不包含全文剪藏，如有需要可从五彩官方模板里复制。
+![style-seyee](/images/style-seyee.png)
 
 ### <a name='MoyF'></a>MoyF
 - Name: MoyF
@@ -192,6 +201,7 @@ obsidianUIMode: preview
 {% endblock %}
 {% endif %}
 ```
+![style-moyf](/images/style-moyf.png)
 
 ## <a name='-1'></a>构建属于自己的模板
 
