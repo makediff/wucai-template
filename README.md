@@ -50,40 +50,48 @@
 
 ```jinja
 ---
-title: "{{title}}"
-url: "{{url}}"
-wucai_url: "{{wucaiurl}}"
-author: "{{author}}"
-tags: {{trimtags}}
-highlightcount: {{highlightcount}}
-isstar: {{isstar}}
-create_at: {{createat}}
-update_at: {{updateat}}
-noteid: {{noteid}}
+标题: "{{title}}"
+笔记ID: {{noteid}}
+笔记类型: {{notetype}}
+星标: "{% if isstar %}是{% else %}否{% endif %}"
+tags: {{mergedtags}}
+{% if not isdailynote %}
+域名: {{domain}}
+域名2: {{domain2}}
+作者: "{{author}}"
+原文链接: "{{url}}"
+{% endif %}
+五彩链接: "{{wucaiurl}}"
+划线数量: {{highlightcount}}
+创建时间: {{createat}}
+更新时间: {{updateat}}
 ---
 
-## Page Notes
+## {{title}} 
+
+## 页面笔记
 {% block pagenote %}
 {{pagenote}}
 {% endblock %}
 
-## Highlights
 {% block highlights %}
 {% if isdailynote  %}
 ## Daily note
 {{ highlights | style_dailynote }}
 {% else %}
-## Highlights
+## 划线列表
 {% for item in highlights %}
 {{ item | style1({prefix:"> ", anno:"> __想法__：", color:"█  "}) }}
 {% endfor %}
 {% endif %}
 {% endblock %}
 
-## Page Markdown
+{% if not isdailynote %}
+## 全文剪藏
 {% block mdcontent %}
 {{mdcontent}}
 {% endblock %}
+{% endif %}
 ```
 
 ### <a name='Seyee'></a>Seyee
@@ -391,4 +399,4 @@ tags: {{tags}}
 ## <a name='-1'></a>⚠️注意事项
 xxx
 
-## <a name='Enjoryourself.'></a>Enjor yourself.
+## <a name='Enjoryourself.'></a>Enjor yourself
