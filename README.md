@@ -172,7 +172,12 @@ obsidianUIMode: preview
 {% for item in highlights %}
 {% set colorSymbol %}◇  {% endset %}
 {% set formattedHighlight %}
-<font color="{{ item.color }}">{{ colorSymbol }}</font> {{ item.note | trim | replace("\n", "\n> ") }}{% endset %}
+{% if item.imageUrl %}
+![]({{item.imageUrl}})
+{% else %}
+<font color="{{ item.color }}">{{ colorSymbol }}</font> {{ item.note | trim | replace("\n", "\n> ") }}
+{% endif %}
+{% endset %}
 
 {% if item.annonation %}
 > [!Annotation]
