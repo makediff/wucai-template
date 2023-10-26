@@ -4,7 +4,7 @@
 * [推荐模板列表](#)
 	* [五彩官方默认](#-1)
 	* [Seyee](#Seyee)
-	* [MoyF](#MoyF)
+	* [Moy](#Moy)
 * [构建属于自己的模板](#-1)
 	* [先来个基础](#-1)
 	* [尝试做一点变更](#-1)
@@ -23,7 +23,7 @@
 		* [style1 demo3](#style1demo3)
 	* [dailynote 样式函数](#dailynote)
 * [⚠️注意事项](#-1)
-* [Enjor yourself.](#Enjoryourself.)
+* [Enjor yourself](#Enjoryourself)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -134,10 +134,10 @@ highlightcount: {{highlightcount}}
 ```
 ![style-seyee](/images/style-seyee.png)
 
-### <a name='MoyF'></a>MoyF
-- Name: MoyF
-- Author: MoyF
-- Link: [MoyF](https://feedback.dotalk.cn/note/H5AA4d41502b.html)
+### <a name='Moy'></a>Moy
+- Name: Moy
+- Author: Moy
+- Link: [Moy](https://feedback.dotalk.cn/note/H5AA4d41502b.html)
 
 ```jinja
 ---
@@ -414,4 +414,4 @@ tags: {{tags}}
 ## <a name='-1'></a>⚠️注意事项
 xxx
 
-## <a name='Enjoryourself.'></a>Enjor yourself
+## <a name='Enjoryourself'></a>Enjor yourself
