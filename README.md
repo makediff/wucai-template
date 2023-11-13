@@ -349,7 +349,7 @@ pagenote: {{ pagenote | yaml_text }}
 ```jinja
 {% if tags %}
 tags: {{tags}}
-{% enfif %}
+{% endif %}
 ```
 
 可以简化成
