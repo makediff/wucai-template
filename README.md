@@ -385,7 +385,7 @@ tags: {{tags}}
 
 #### <a name='style1demo3'></a>style1 demo3
 ```jinja
-{{ item | style1({prefix:"> ", anno:"> __想法__：", colorx:"█  ", refid:true}) }}
+{{ item | style1({prefix:"> ", anno:"> __想法__：", color:"█  ", refid:true}) }}
 ```
 ![style1 demo3](/images/style1-3.png)
 
