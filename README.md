@@ -269,7 +269,8 @@ obsidianUIMode: preview
 {{notetype}}        : 笔记类型（string），page，dailynote
 {{ispagemirror}}    : 是否剪藏(boolean)，true是剪藏，否则不是剪藏
 {{highlightcount}}  : 划线数量 (integer)，当前网页的划线数量
-{{mdcontent}}		     : markdown 格式的全文剪藏
+{{annotationcount}} : 想法数量(integer), （版本>=24.7.9）
+{{mdcontent}}		    : markdown 格式的全文剪藏
 {{highlights}}           : 划线列表 (list)
     {{item.type}}        : 划线类型 (string), 分别是 highlight、image、math(数学公式)、quote(引用)
     {{item.refid}}       : 划线id (string)，如 b76ebe3
@@ -277,6 +278,7 @@ obsidianUIMode: preview
     {{item.note}}        : 划线 (string)
     {{item.imageUrl}}    : 图片划线 (string), 注意这里的大小写，有个大写字母U
     {{item.annonation}}  : 划线的想法 (string)
+    {{item.tags}}        : 划线的标签，如 #read #todo (版本 >= 24.7.9)
     {{item.color}}       : 划线颜色 (string)
     {{item.slotid}}      : 颜色对应的槽位值, 1~6 对应 6 种颜色
     {{item.updateat_ts}} : 划线的更新时间 (秒，时间戳, int)
