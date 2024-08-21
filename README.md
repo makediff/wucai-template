@@ -2,14 +2,13 @@
 <!-- vscode-markdown-toc -->
 * [五彩 Obsidian 模板使用手册](#Obsidian)
 * [推荐模板列表](#)
-	* [五彩官方默认](#-1)
-	* [Seyee](#Seyee)
+	* [五彩默认模板](#-1)
 	* [Moy](#Moy)
-* [构建属于自己的模板](#-1)
-	* [先来个基础](#-1)
-	* [尝试做一点变更](#-1)
-	* [五彩模板变量名](#-1)
-	* [尝试修改模板](#-1)
+* [自定义模板](#-1)
+	* [了解模板的组成部分](#-1)
+	* [尝试修改一下](#-1)
+	* [模板变量列表](#-1)
+	* [尝试使用变量](#-1)
 	* [应用模板](#-1)
 * [模板引擎说明](#-1)
 * [五彩提供的几个函数](#-1)
@@ -22,8 +21,7 @@
 		* [style1 demo2](#style1demo2)
 		* [style1 demo3](#style1demo3)
 	* [dailynote 样式函数](#dailynote)
-* [⚠️注意事项](#-1)
-* [Enjor yourself](#Enjoryourself)
+* [Enjoy yourself](#Enjoyyourself)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -34,18 +32,18 @@
 ## <a name='Obsidian'></a>五彩 Obsidian 模板使用手册
 你好，五彩的朋友 🤝❤️
 
-五彩支持将数据同步到 Obsidian、Logseq、Workflowy。
-数据包括划线、想法、笔记、全文剪藏。
-同步的时候，通过模板来实现个性化样式。
+五彩支持将数据同步到 Obsidian、思源、Logseq 和 Workflowy。
+同步的内容有划线、想法、页面笔记和全文剪藏。
+还可以通过模板来自定义样式。
 
-五彩提供了默认模板样式，也收集了热心朋友贡献的模板，以供大家使用。
-如果想定制一个个性化样式，看这个教程就对了。接下来，跟着这个教程，一步步操作，即可入门模板编写。期待你的新作，也期待你的分享。
+这里有默认模板，也收集了热心朋友贡献的模板，以供大家使用。
+如果想自定义模板，可以跟着这个教程，一步步操作编写。
 
 ## <a name=''></a>推荐模板列表
 
-### <a name='-1'></a>五彩官方默认 
+### <a name='-1'></a>五彩默认模板
 - Name: Simple
-- Author: 五彩Team
+- Author: 五彩 Team
 - Link: [五彩官网](https://www.dotalk.cn/product/wucai)
 
 ```jinja
@@ -95,45 +93,6 @@ tags: {{mergedtags}}
 ```
 ![style-wucai](/images/style-wucai.png)
 
-### <a name='Seyee'></a>Seyee
-- Name: Seyee
-- Author: Seyee
-- Link: [seyee.co](https://seyee.co/post/wucai_template/)
-
-```jinja
----
-title: {{title}}
-url: {{url}}
-wucai_url: {{wucaiurl}}
-创建时间: {{createat}}
-更新时间: {{updateat}}
-highlightcount: {{highlightcount}}
-{% if not isdailynote %}
-全文剪藏: {{ispagemirror}}
-{% endif %}
-{{trimtags | replace("#", "") | replace("星标", "五彩星标") | yaml_field("tags:") }}
-{{pagenote | replace("#五彩小助手", "") | yaml_text | yaml_field("pagenote:") }}
----
-
-## highlights
-
-{% block highlights %}
-
-{% for item in highlights %}
-{{ item | style1({prefix:"> ", anno:"> #notes ", color:""}) }}
-{% endfor %}
-
-{% endblock %}
-
-{% if not isdailynote %}
-## 全文剪藏
-{% block mdcontent %}
-{{mdcontent}}
-{% endblock %}
-{% endif %}
-```
-![style-seyee](/images/style-seyee.png)
-
 ### <a name='Moy'></a>Moy
 - Name: Moy
 - Author: Moy
@@ -153,8 +112,6 @@ obsidianUIMode: preview
 ---
 
 # {{title}} 
-
-#Wucai
 
 > [阅读原文]({{ url }})
 > [在五彩中查看]({{ wucaiurl }})
@@ -208,9 +165,9 @@ obsidianUIMode: preview
 ```
 ![style-moyf](/images/style-moyf.png)
 
-## <a name='-1'></a>构建属于自己的模板
+## <a name='-1'></a>自定义模板
 
-### <a name='-1'></a>先来个基础
+### <a name='-1'></a>了解模板的组成部分
 
 ```jinja
 ---
@@ -228,24 +185,25 @@ obsidianUIMode: preview
 {% endblock %}
 ```
 
-这个模板由 3 个部分组成。
-- properties 区域，也就是 front matter。使用 YAML 格式，左边是属性名字，右边是属性值，中间用英文冒号分割；
-- 两个 `##` 开始的代表了一个h2标题。这里是做演示用，其实可以放任何内容；
-- 最后是一个 block，它的名字是 highlights；因为所有的划线加在一起是一个列表，所以这里通过循环来遍历整个划线，并使用五彩内置的 `style1`来输出划线样式。
+此模板由 3 个部分组成：
+- properties 区域，也就是 frontmatter。使用 YAML 格式，左边是属性名字，右边是属性值，中间用英文冒号分割；
+- `##` 前缀的行代表是一个h2标题；
+- 最后是一个 block，它的名字是 highlights，里面用来遍历所有划线，使用五彩内置的 `style1` 样式。
 
-### <a name='-1'></a>尝试做一点变更
-嗯，这个模板真是太简单了，想必根本满足不了大家的需要。
-想要在属性区域加个原文链接，怎么操作？
+### <a name='-1'></a>尝试修改一下
+这个模板比较简单，想必是满足不了大家的需要的。
 
-这个就涉及到了五彩模板变量名，以下是五彩模板所有变量名列表。
-变量值有几种类型，在使用的时候，大家需要注意下。
+如果想在属性区域加个原文链接，怎么操作？
+
+这个就涉及到了变量，以下是五彩模板变量列表。
+（变量值有几种类型，在使用的时候，大家需要注意下。）
 
 - string 代表是一个字符串
 - int 代表是一个数字，比如划线数量、时间戳
 - bollean 代表是或否
 - list 代表一个列表（数组）
 
-### <a name='-1'></a>五彩模板变量名
+### <a name='-1'></a>模板变量列表
 ```YAML
 {{title}}           : 标题 (string)
 {{url}}             : 原始链接 (string)
@@ -276,7 +234,7 @@ obsidianUIMode: preview
     {{item.refid}}       : 划线id (string)，如 b76ebe3
     {{item.refurl}}      : 划线链接 (string)
     {{item.note}}        : 划线 (string)
-    {{item.imageUrl}}    : 图片划线 (string), 注意这里的大小写，有个大写字母U
+    {{item.imageurl}}    : 图片划线 (string)
     {{item.annonation}}  : 划线的想法 (string)
     {{item.tags}}        : 划线的标签，如 #read #todo (版本 >= 24.7.9)
     {{item.color}}       : 划线颜色 (string)
@@ -285,7 +243,7 @@ obsidianUIMode: preview
     {{item.createat_ts}} : 划线创建实践 (秒，时间戳, int)
 ```
 
-### <a name='-1'></a>尝试修改模板
+### <a name='-1'></a>尝试使用变量
 找到了链接的变量是 `{{url}}`，开始修改模板。
 
 ```jinja
@@ -305,26 +263,22 @@ obsidianUIMode: preview
 {% endblock %}
 ```
 
-> 假如要把 {{pagenote}} 放到属性里，需要做一个小小的变更，因为页面笔记可能有换行，且 YAML 多行文本语法手写麻烦，五彩为大家准备了一个小函数。直接使用 `yaml_text` 函数就行。
+> 假如要把 {{pagenote}} 放到属性里，方法会有点不一样，是因为页面笔记里可能有换行，直接使用 `yaml_text` 函数就能处理，可这样写：
 
 ```jinja
 pagenote: {{pagenote | yaml_text}}
 ```
 
 ### <a name='-1'></a>应用模板
-修改好了如何应用到五彩到Obsidian的同步呢？
+修改好了的模板，如何应用到五彩的 Obsidian 同步呢？
 [点击跳往五彩后台](https://marker.dotalk.cn/#/personSetting/sync)，保存后，就能在Obsidian里使用了。
 
 ## <a name='-1'></a>模板引擎说明
 五彩使用的是 [nunjucks](https://mozilla.github.io/nunjucks/cn/templating.html#part-654287f5790) 模板引擎，这是一个功能强大使用简单的模板引擎。
 
-nunjucks 官网文档写得非常细致，是个非常好的学习资料。不过，也不必全部看一遍，大致了解有什么功能，需要的时候再去看详细的。
-
-重点了解一下 `if`、`for` 和函数的使用。
+nunjucks 官网文档写得非常细致，是个非常好的资料来源。不过，也不必全部看一遍，大致了解有什么功能，需要的时候再去查手册就可以了。重点了解一下 `if`、`for` 和函数的使用即可。
 
 ## <a name='-1'></a>五彩提供的几个函数
-
-为了便于使用，五彩提供了几个便捷函数。
 
 ### <a name='date'></a>date 日期函数
 用来将一个时间戳转化成实践格式。
@@ -372,6 +326,8 @@ tags: {{tags}}
   - color_tags 用来将不同的颜色对应不同的标签, array
   - color 指定颜色色块, string
   - color_line 指定是否将整个划线都高亮, boolean
+- 划线里的链接如何处理
+	- links 指定是否需要将划线里的链接合并到划线里，boolean类型，true代表合并, false代表不合并。(version >= 24.8.21)
 
 #### <a name='style1demo1'></a>style1 demo1
 ```jinja
@@ -393,11 +349,11 @@ tags: {{tags}}
 
 ### <a name='dailynote'></a>dailynote 样式函数
 
-专门给小助手消息的特殊模板，默认基于日期（分钟级别）进行消息分组。
+专门给 daily 消息的特殊模板，默认基于日期（分钟级别）进行消息分组。
 
-通过 isdailynote可判断当前是否为通过小助手或openapi发布的消息，如果是，可以采用不同的模板。
+通过 isdailynote 可判断当前是否为 daily 类型，如果是可以采用此模板。
 
-注意，在 style_dailynote 中，使用的是变量 ==highlights== 。
+注意，在 style_dailynote 中，给函数传递的变量是 ==highlights== 。
 
 ```jinja
 {% block highlights %}
@@ -412,8 +368,4 @@ tags: {{tags}}
 {% endif %}
 {% endblock %}
 ```
-
-## <a name='-1'></a>⚠️注意事项
-xxx
-
-## <a name='Enjoryourself'></a>Enjor yourself
+## <a name='Enjoyyourself'></a>Enjoy yourself
