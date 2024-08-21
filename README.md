@@ -228,19 +228,20 @@ obsidianUIMode: preview
 {{ispagemirror}}    : 是否剪藏(boolean)，true是剪藏，否则不是剪藏
 {{highlightcount}}  : 划线数量 (integer)，当前网页的划线数量
 {{annotationcount}} : 想法数量(integer), （版本>=24.7.9）
-{{mdcontent}}		    : markdown 格式的全文剪藏
+{{mdcontent}}		     : markdown 格式的全文剪藏
 {{highlights}}           : 划线列表 (list)
-    {{item.type}}        : 划线类型 (string), 分别是 highlight、image、math(数学公式)、quote(引用)
+    {{item.type}}        : 划线类型(string), 分别是 highlight, image, math(数学公式), quote(引用)， (版本 >= 23.10.20)
     {{item.refid}}       : 划线id (string)，如 b76ebe3
-    {{item.refurl}}      : 划线链接 (string)
+    {{item.refurl}}      : 划线跳转链接(string), (版本 >= 23.10.20)
     {{item.note}}        : 划线 (string)
+    {{item.notelinks}}   : 划线里的超链接(list), 每个元素是对象，如 {url:"链接", title:"标题"}, (版本 >= 24.8.21)
     {{item.imageurl}}    : 图片划线 (string)
-    {{item.annonation}}  : 划线的想法 (string)
-    {{item.tags}}        : 划线的标签，如 #read #todo (版本 >= 24.7.9)
+    {{item.annotation}}  : 划线的想法 (string)
     {{item.color}}       : 划线颜色 (string)
     {{item.slotid}}      : 颜色对应的槽位值, 1~6 对应 6 种颜色
-    {{item.updateat_ts}} : 划线的更新时间 (秒，时间戳, int)
-    {{item.createat_ts}} : 划线创建实践 (秒，时间戳, int)
+    {{item.updateat_ts}} : 划线的更新时间(int) (版本 >= 23.10.20)
+    {{item.createat_ts}} : 划线创建时间(int)  (版本 >= 23.10.20)
+    {{item.tags}}        : 划线的标签，如 #read #todo (版本 >= 24.7.9)
 ```
 
 ### <a name='-1'></a>尝试使用变量
